@@ -55,18 +55,18 @@ SinglyLinkedList.prototype.insert = function(index, val) {
     
     let newNode = new Node(val);
 
-    let currentNode = this.head;
+    let currententNode = this.head;
     let counter = 0;
-    while(currentNode){
+    while(currententNode){
         if(counter === index  - 1){
             break;
         }
         counter++;
-        currentNode = currentNode.next;
+        currententNode = currententNode.next;
     }
 
-    newNode.next = currentNode.next;
-    currentNode.next = newNode;
+    newNode.next = currententNode.next;
+    currententNode.next = newNode;
 
     this.length++;
 
@@ -78,17 +78,17 @@ SinglyLinkedList.prototype.getNode = function(index){
         return undefined;
     }
 
-    let currentNode = this.head;
+    let currententNode = this.head;
     let counter = 0;
-    while(currentNode){
+    while(currententNode){
         if(counter === index){
             break;
         }
         counter++;
-        currentNode = currentNode.next;
+        currententNode = currententNode.next;
     }
 
-    return currentNode;
+    return currententNode;
 }
 
 SinglyLinkedList.prototype.get = function(index) {
@@ -136,9 +136,9 @@ SinglyLinkedList.prototype.remove = function(index){
     if(this.length === 1){
         removedNode = this.shift();
     }else{
-        let previousNode = this.getNode(index - 1);
-        removedNode = previousNode.next;
-        previousNode.next = previousNode.next.next;
+        let previousiousNode = this.getNode(index - 1);
+        removedNode = previousiousNode.next;
+        previousiousNode.next = previousiousNode.next.next;
         removedNode.next = null;
     }
 
@@ -155,5 +155,19 @@ SinglyLinkedList.prototype.pop = function() {
 
 
 SinglyLinkedList.prototype.reverse = function() {
+ let previous = null;
+    let next = null;
+    let tail = this.tail;
+    let current = this.head;
+    tail = current
 
+  while (current!== null) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+    let result  =   this.head = previous
+
+    return result;
 }
