@@ -17,7 +17,23 @@ function DoublyLinkedList(array = []){
 }
 
 DoublyLinkedList.prototype.push = function(val){
+ let newNode = new Node(val);
+// in empty case
+  if (this.head === null) {
+    this.head = newNode;
+    this.tail = this.head;
+  }
+//   case not empty 
+  else {
+    this.tail.next = newNode;
+    newNode.prev = this.tail;
+    this.tail = newNode;
+  }
     
+    // increment the length
+  this.length++;
+
+  return this;
 }
 
 DoublyLinkedList.prototype.unshift = function(val){
